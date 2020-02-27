@@ -3,7 +3,7 @@ const set = (res, cookieName, cookieValue,
   res.cookie(cookieName, cookieValue, {
     secure: true,
     httpOnly: true,
-    sameSite: true,
+    sameSite: 'lax',
     domain
   });
 };
