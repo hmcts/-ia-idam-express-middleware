@@ -1,13 +1,12 @@
 const idamWrapper = require('../wrapper');
 const UUID = require('uuid/v4');
-const { Logger } = require('@hmcts/nodejs-logging');
 const config = require('../config');
 const cookies = require('../utilities/cookies');
-
-const logger = Logger.getLogger(__filename);
+const IdamLogger = require('./Logger');
 
 const idamExpressAuthenticate = (args = {}) => {
   const idamFunctions = idamWrapper.setup(args);
+  const logger = new IdamLogger(args);
 
   const tokenCookieName = args.tokenCookieName || config.tokenCookieName;
   const stateCookieName = args.stateCookieName || config.stateCookieName;
